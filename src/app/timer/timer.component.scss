@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.countdown-container {
+  width: 60%;
+  height: 30rem;
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #c31432, #240b36);
+  color: #fff;
+  border-radius: 1rem;
+
+  @media screen and (max-width: 800px) {
+    height: 100%;
+    width: 100%;
+    font-size: 10rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 7rem;
+  }
+}
