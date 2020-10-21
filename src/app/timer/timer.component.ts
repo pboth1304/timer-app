@@ -21,8 +21,18 @@ export class TimerComponent implements OnInit {
   constructor(private readonly apiService: ApiService) {}
 
   ngOnInit() {
-    console.log('countdown', this.countdown);
-    this.apiService.connect(true);
+    this.apiService.myWebSocket.subscribe(
+      (msg) => {
+        if (msg) {
+          this.countdown.begin();
+        }
+      },
+      // Called whenever there is a message from the server
+      (err) => console.log(err),
+      // Called if WebSocket API signals some kind of error
+      () => console.log('complete')
+      // Called when connection is closed (for whatever reason)
+    );
   }
 
   handle(event: CountdownEvent) {
@@ -30,7 +40,6 @@ export class TimerComponent implements OnInit {
   }
 
   start() {
-    this.countdown.begin();
-    this.apiService.sendMessage('test');
+    this.apiService.send('TIMER_START:1');
   }
 }
