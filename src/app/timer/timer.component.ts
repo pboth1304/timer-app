@@ -4,6 +4,8 @@ import {
   CountdownConfig,
   CountdownEvent,
 } from 'ngx-countdown';
+import { webSocket } from 'rxjs/webSocket';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-timer',
@@ -14,15 +16,21 @@ export class TimerComponent implements OnInit {
   @ViewChild('countdown', { static: false })
   private countdown: CountdownComponent;
 
-  countdownConfig: CountdownConfig = { leftTime: 10 };
+  countdownConfig: CountdownConfig = { leftTime: 10, demand: true };
 
-  constructor() {}
+  constructor(private readonly apiService: ApiService) {}
 
   ngOnInit() {
     console.log('countdown', this.countdown);
+    this.apiService.connect(true);
   }
 
   handle(event: CountdownEvent) {
     console.log('event', event);
+  }
+
+  start() {
+    this.countdown.begin();
+    this.apiService.sendMessage('test');
   }
 }
