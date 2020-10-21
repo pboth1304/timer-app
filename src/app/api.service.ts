@@ -12,7 +12,7 @@ export class ApiService {
   RETRY_SECONDS = 10;
 
   myWebSocket: WebSocketSubject<any> = webSocket(
-    environment.production ? '' : 'ws://localhost:8080'
+    environment.production ? '/' : 'ws://localhost:8080'
   );
 
   constructor() {}
