@@ -38,4 +38,8 @@ export class TimerComponent implements OnInit {
   handle(event: CountdownEvent) {
     console.log('event', event);
   }
+
+  start() {
+    this.apiService.send('TIMER_START:1');
+  }
 }
