@@ -14,6 +14,6 @@ export class AdminViewComponent implements OnInit {
   }
 
   start() {
-    this.apiService.send('TIMER_START:1');
+    this.apiService.send();
   }
 }

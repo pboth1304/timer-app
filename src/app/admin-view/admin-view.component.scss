@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.btn {
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  background-color: #424242;
+  color: #fff;
+  border: none;
+}

@@ -2,11 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const WebSocket = require("ws");
 const http = require("http");
+var path = require("path");
 
 const app = express();
 app.use(bodyParser.json());
 
 app.use(express.static(`${__dirname}/dist/`));
+
+// Send all other requests to the Angular app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
+});
 
 const server = http.createServer(app);
 

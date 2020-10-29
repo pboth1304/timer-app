@@ -1,9 +1,10 @@
-<button (click)="start()">Start</button>
-
 <div class="countdown-container">
   <countdown
     #countdown
+    *ngIf="!finished"
     [config]="countdownConfig"
     (event)="handle($event)"
   ></countdown>
+
+  <div class="time-over" *ngIf="finished">Zeit abgelaufen!!!</div>
 </div>
