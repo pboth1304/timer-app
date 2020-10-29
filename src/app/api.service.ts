@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
   myWebSocket = webSocket({
     url: environment.production
-      ? 'wss://escape-church-timer.herokuapp.com'
+      ? 'wss://ec-timer.herokuapp.com'
       : 'ws://localhost:8080',
   });
 
@@ -20,7 +20,7 @@ export class ApiService {
   reconnect() {
     this.myWebSocket = webSocket({
       url: environment.production
-        ? 'wss://escape-church-timer.herokuapp.com'
+        ? 'wss://ec-timer.herokuapp.com'
         : 'ws://localhost:8080',
     });
   }
